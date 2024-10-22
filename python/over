@@ -1,0 +1,15 @@
+def replace_large_numbers():
+    # Prompt the user for a list of integers
+    user_input = input("Enter a list of integers separated by spaces: ")
+    
+    # Split the input into a list of strings and convert to integers
+    integers = list(map(int, user_input.split()))
+    
+    # Replace values greater than or equal to 100 with "over"
+    result = ["over" if num >= 100 else num for num in integers]
+    
+    return result
+
+# Example usage
+result_list = replace_large_numbers()
+print(result_list)
