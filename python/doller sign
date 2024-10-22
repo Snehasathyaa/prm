@@ -1,0 +1,19 @@
+def replace_first_char(string):
+    # Check if the string is not empty
+    if len(string) == 0:
+        return string
+
+    # Get the first character
+    first_char = string[0]
+    
+    # Replace all occurrences of the first character with "$" except the first character
+    modified_string = first_char + string[1:].replace(first_char, "$")
+    
+    return modified_string
+
+# Get user input
+user_input = input("Enter a string: ")
+
+# Replace the first character occurrences and print the result
+result = replace_first_char(user_input)
+print("Modified string:", result)
