@@ -1,0 +1,46 @@
+def count_word_occurrences(line):
+    words = line.split()  # Split the line into words
+    word_count_list = []  # List to store words and their counts
+
+    for word in words:
+        word = word.lower()  # Convert to lowercase
+        # Check if the word is already counted
+        for item in word_count_list:
+            if item[0] == word:
+                item[1] += 1  # Increment count
+                break
+        else:
+            word_count_list.append([word, 1])  # Add new word
+
+    return word_count_list
+
+# Example usage
+line = "This is a test. This test is only a test."
+word_occurrences = count_word_occurrences(line)
+print(word_occurrences)
+
+
+##########
+
+def count_word_occurrences(line):
+    # Split the line into words using whitespace as a delimiter
+    words = line.split()
+    
+    # Create a dictionary to store word counts
+    word_count = {}
+    
+    # Count occurrences of each word
+    for word in words:
+        # Convert word to lowercase to make the count case-insensitive
+        word = word.lower()
+        if word in word_count:
+            word_count[word] += 1
+        else:
+            word_count[word] = 1
+            
+    return word_count
+
+# Example usage
+line = "This is a test. This test is only a test."
+word_occurrences = count_word_occurrences(line)
+print(word_occurrences)
