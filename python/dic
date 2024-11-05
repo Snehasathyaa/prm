@@ -1,0 +1,31 @@
+# Create a dictionary for the student
+student = {
+    "name": "John Doe",
+    "roll_number": "12345",
+    "registration_number": "REG202345",
+    "department": "Computer Science",
+    "semester": "5th"
+}
+
+# Add the total marks
+student["total_mark"] = 88  # example total mark
+
+# Calculate and add the grade based on total marks
+if student["total_mark"] >= 90:
+    student["grade"] = "A"
+elif student["total_mark"] >= 82:
+    student["grade"] = "B"
+elif student["total_mark"] >= 75:
+    student["grade"] = "C"
+elif student["total_mark"] >= 60:
+    student["grade"] = "D"
+elif student["total_mark"] >= 50:
+    student["grade"] = "P"
+else:
+    student["grade"] = "F"  # Assuming F for marks below 50
+
+# Delete the roll number from the dictionary
+del student["roll_number"]
+
+# Print the final dictionary
+print(student)
