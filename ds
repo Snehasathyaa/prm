@@ -1,87 +1,108 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Define the structure for a node
+// Node structure
 struct Node {
     int data;
-    struct Node* next;
+    struct Node *next;
 };
 
+// Top pointer
+struct Node *top = NULL;
+
 // Function to create a new node
-struct Node* createNode(int data) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+struct Node *createNode(int data) {
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
     newNode->data = data;
     newNode->next = NULL;
     return newNode;
 }
 
-// Function to add a node at the end of the list
-void appendNode(struct Node** head, int data) {
-    struct Node* newNode = createNode(data);
-    if (*head == NULL) {
-        *head = newNode;
+// Push operation
+void push(int data) {
+    struct Node *newNode = createNode(data);
+    if (top == NULL) {
+        top = newNode;
+    } else {
+        newNode->next = top;
+        top = newNode;
+    }
+    printf("%d pushed onto the stack.\n", data);
+}
+
+// Pop operation
+void pop() {
+    if (top == NULL) {
+        printf("Stack underflow! Cannot pop.\n");
         return;
     }
-    struct Node* temp = *head;
-    while (temp->next != NULL) {
-        temp = temp->next;
-    }
-    temp->next = newNode;
+    struct Node *temp = top;
+    printf("%d popped from the stack.\n", temp->data);
+    top = top->next;
+    free(temp);
 }
 
-// Function to display the list
-void displayList(struct Node* head) {
-    struct Node* temp = head;
+// Peek operation
+void peek() {
+    if (top == NULL) {
+        printf("Stack is empty.\n");
+        return;
+    }
+    printf("Top element is: %d\n", top->data);
+}
+
+// Check if stack is empty
+int isEmpty() {
+    return top == NULL;
+}
+
+// Display stack elements
+void display() {
+    if (top == NULL) {
+        printf("Stack is empty.\n");
+        return;
+    }
+    struct Node *temp = top;
+    printf("Stack elements: ");
     while (temp != NULL) {
-        printf("%d -> ", temp->data);
+        printf("%d ", temp->data);
         temp = temp->next;
     }
-    printf("NULL\n");
+    printf("\n");
 }
 
-// Function to delete the entire list and free memory
-void deleteList(struct Node** head) {
-    struct Node* current = *head;
-    struct Node* nextNode;
-
-    while (current != NULL) {
-        nextNode = current->next;
-        free(current);
-        current = nextNode;
-    }
-    *head = NULL;
-}
-
+// Main function
 int main() {
-    struct Node* head = NULL;
     int choice, data;
 
-    while (1) {
-        printf("\n1. Insertion \n2. Traversal\n3. Deletion\n4. Exit\n");
+    do {
+        printf("\nStack Operations:\n");
+        printf("1. Push\n2. Pop\n3. Peek\n4. Display\n5. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
         switch (choice) {
             case 1:
-                printf("Enter data to insert: ");
+                printf("Enter data to push: ");
                 scanf("%d", &data);
-                appendNode(&head, data);
+                push(data);
                 break;
             case 2:
-                printf("Linked List: ");
-                displayList(head);
+                pop();
                 break;
             case 3:
-                deleteList(&head);
-                printf("List deleted.\n");
+                peek();
                 break;
             case 4:
-                deleteList(&head);
-                exit(0);
+                display();
+                break;
+            case 5:
+                printf("Exiting program.\n");
+                break;
             default:
-                printf("Invalid choice.\n");
+                printf("Invalid choice! Please try again.\n");
         }
-    }
+    } while (choice != 5);
 
     return 0;
 }
