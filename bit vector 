@@ -1,0 +1,130 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+#define UNIVERSAL_SIZE 26
+
+// Function to check if an element is in a set
+bool isInSet(char element, char set[], int size) {
+    for (int i = 0; i < size; i++) {
+        if (set[i] == element) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Union of two sets
+void unionSets(char set1[], int size1, char set2[], int size2) {
+    printf("Union: ");
+    for (int i = 0; i < size1; i++) {
+        printf("%c ", set1[i]);
+    }
+    for (int i = 0; i < size2; i++) {
+        if (!isInSet(set2[i], set1, size1)) {
+            printf("%c ", set2[i]);
+        }
+    }
+    printf("\n");
+}
+
+// Intersection of two sets
+void intersectionSets(char set1[], int size1, char set2[], int size2) {
+    printf("Intersection: ");
+    for (int i = 0; i < size1; i++) {
+        if (isInSet(set1[i], set2, size2)) {
+            printf("%c ", set1[i]);
+        }
+    }
+    printf("\n");
+}
+
+// Complement of a set
+void complementSet(char set[], int size, char universal[]) {
+    printf("Complement: ");
+    for (int i = 0; i < UNIVERSAL_SIZE; i++) {
+        if (!isInSet(universal[i], set, size)) {
+            printf("%c ", universal[i]);
+        }
+    }
+    printf("\n");
+}
+
+// Set difference (set1 - set2)
+void differenceSets(char set1[], int size1, char set2[], int size2) {
+    printf("Set Difference (Set1 - Set2): ");
+    for (int i = 0; i < size1; i++) {
+        if (!isInSet(set1[i], set2, size2)) {
+            printf("%c ", set1[i]);
+        }
+    }
+    printf("\n");
+}
+
+int main() {
+    int i, choice;
+    char universal[UNIVERSAL_SIZE] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+    char set1[26], set2[26];
+    int size1, size2;
+
+    // Input for Set 1
+    printf("Enter the size of set 1: ");
+    scanf("%d", &size1);
+    getchar(); // Consume newline
+    printf("Enter the elements of set 1:\n");
+    for (i = 0; i < size1; i++) {
+        scanf("%c", &set1[i]);
+        getchar(); // Consume newline
+    }
+
+    // Input for Set 2
+    printf("Enter the size of set 2: ");
+    scanf("%d", &size2);
+    getchar(); // Consume newline
+    printf("Enter the elements of set 2:\n");
+    for (i = 0; i < size2; i++) {
+        scanf("%c", &set2[i]);
+        getchar(); // Consume newline
+    }
+
+    // Menu-driven operations
+    do {
+        printf("\nMenu:\n");
+        printf("1. Union\n");
+        printf("2. Intersection\n");
+        printf("3. Complement of Set 1\n");
+        printf("4. Complement of Set 2\n");
+        printf("5. Set Difference (Set1 - Set2)\n");
+        printf("6. Set Difference (Set2 - Set1)\n");
+        printf("7. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                unionSets(set1, size1, set2, size2);
+                break;
+            case 2:
+                intersectionSets(set1, size1, set2, size2);
+                break;
+            case 3:
+                complementSet(set1, size1, universal);
+                break;
+            case 4:
+                complementSet(set2, size2, universal);
+                break;
+            case 5:
+                differenceSets(set1, size1, set2, size2);
+                break;
+            case 6:
+                differenceSets(set2, size2, set1, size1);
+                break;
+            case 7:
+                printf("Exiting program.\n");
+                break;
+            default:
+                printf("Invalid choice. Try again.\n");
+        }
+    } while (choice != 7);
+
+    return 0;
+}
