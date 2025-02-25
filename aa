@@ -1,1 +1,58 @@
-update products set price = price * 1.1
+import java.util.Scanner;
+
+public class Cars {
+    public static void main(String[] args) {
+        // Create a Scanner object for user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Create Product objects with user input
+        Product p1 = new Product();
+        System.out.println("Enter details for Product 1:");
+        System.out.print("Enter Product Code: ");
+        p1.pcode = scanner.nextLine();
+        System.out.print("Enter Product Name: ");
+        p1.pname = scanner.nextLine();
+        System.out.print("Enter Product Price: ");
+        p1.price = scanner.nextDouble();
+        scanner.nextLine();  // Clear buffer
+
+        System.out.println("Displaying p1:");
+        p1.display();
+
+        // Create second Product with user input
+        Product p2 = new Product();
+        System.out.println("Enter details for Product 2:");
+        System.out.print("Enter Product Code: ");
+        p2.pcode = scanner.nextLine();
+        System.out.print("Enter Product Name: ");
+        p2.pname = scanner.nextLine();
+        System.out.print("Enter Product Price: ");
+        p2.price = scanner.nextDouble();
+        scanner.nextLine();  // Clear buffer
+
+        System.out.println("Displaying p2:");
+        p2.display();
+
+        // Create third Product with user input
+        Product p3 = new Product();
+        System.out.println("Enter details for Product 3:");
+        System.out.print("Enter Product Code: ");
+        p3.pcode = scanner.nextLine();
+        System.out.print("Enter Product Name: ");
+        p3.pname = scanner.nextLine();
+        System.out.print("Enter Product Price: ");
+        p3.price = scanner.nextDouble();
+        scanner.nextLine();  // Clear buffer
+
+        System.out.println("Displaying p3:");
+        p3.display();
+
+        // Find the product with the lowest price
+        Product p = p3.getprice() < (p1.price < p2.price ? p1.price : p2.price) ? p3 : (p1.price < p2.price ? p1 : p2);
+        System.out.println("\nDisplaying Product with Lowest Price:");
+        p.display();
+
+        // Close the scanner
+        scanner.close();
+    }
+}
