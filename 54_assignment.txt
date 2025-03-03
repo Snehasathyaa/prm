@@ -69,3 +69,10 @@ drop table students;
 
 insert into bookissues values (1,101,'2024-12-09','2024-12-10'),(2,101,'2024-11-21','2024-11-28'),(4,102,'2025-01-11','2025-01-15'),(1,103,'2025-01-11','2025-01-16'),(2,103,'2025-02-14','2025-02-18' );
 
+
+
+
+
+
+ select books.bookid,title,author,students.studentid,name from books,students,bookissues where books.bookid=bookissues.bookid and students.studentid=bookissues.studentid;
+
