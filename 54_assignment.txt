@@ -76,3 +76,6 @@ insert into bookissues values (1,101,'2024-12-09','2024-12-10'),(2,101,'2024-11-
 
  select books.bookid,title,author,students.studentid,name from books,students,bookissues where books.bookid=bookissues.bookid and students.studentid=bookissues.studentid;
 
+
+
+ select dname,studentid,name from departments,students where students.dno=departments.dno;
