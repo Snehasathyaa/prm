@@ -1,3 +1,78 @@
+#!/bin/bash
+
+# Function to calculate the area of the circle
+calculate_area() {
+    local radius=$1
+    local area=$(echo "scale=2; 3.14159 * $radius * $radius" | bc)
+    echo $area
+}
+
+# Prompt the user to enter the radius
+echo "Enter the radius of the circle:"
+read radius
+
+# Call the function to calculate the area
+area=$(calculate_area $radius)
+
+# Display the result
+echo "The area of the circle with radius $radius is: $area"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import java.util.Scanner;
 
 public class Cars {
