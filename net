@@ -1,0 +1,85 @@
+#!/bin/bash
+
+read -p "Enter a string: " str
+
+if [[ "$str" == "$(echo "$str" | rev)" ]]; then
+    echo "Palindrome"
+else
+    echo "Not a palindrome"
+fi
+
+
+
+
+
+
+
+
+#!/bin/bash
+
+# Function to calculate the area of a circle
+calculate_area() {
+    local radius=$1
+    local area=$(echo "3.14159 * $radius * $radius" | bc)  # Using 'bc' for floating-point calculation
+    echo "The area of the circle with radius $radius is: $area"
+}
+
+# Read radius from the user
+read -p "Enter the radius of the circle: " radius
+
+# Call the function
+calculate_area "$radius"
+
+
+
+
+
+
+#!/bin/bash
+
+validate_password() {
+    local password="$1"
+
+    if [[ ${#password} -lt 8 ]]; then
+        echo "Weak: Password must be at least 8 characters long."
+        return
+    fi
+    if ! [[ "$password" =~ [A-Z] ]]; then
+        echo "Weak: Password must contain at least one uppercase letter."
+        return
+    fi
+    if ! [[ "$password" =~ [a-z] ]]; then
+        echo "Weak: Password must contain at least one lowercase letter."
+        return
+    fi
+    if ! [[ "$password" =~ [0-9] ]]; then
+        echo "Weak: Password must contain at least one digit."
+        return
+    fi
+
+
+
+
+
+
+
+#!/bin/bash
+
+# Read the number of elements
+read -p "Enter the number of elements: " n
+
+# Declare an array
+declare -a arr
+
+# Input elements
+echo "Enter the elements:"
+for ((i = 0; i < n; i++)); do
+    read arr[i]
+done
+
+# Display elements
+echo "The array elements are:"
+for element in "${arr[@]}"; do
+    echo "$element"
+done
+
