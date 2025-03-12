@@ -37,6 +37,7 @@ echo "The area of the circle with radius $radius is: $area"
 
 
 
+ select students.studentid,students.name from students  left outer join bookissues on students.studentid=bookissues.studentid where bookissues.studentid is NULL;
 
 
 
