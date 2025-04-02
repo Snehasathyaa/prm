@@ -9,7 +9,6 @@
 -- Table structure for table books
 --
 
-
 create table books(bookid int primary key,title varchar(100) NOT NULL,author varchar(50) NOT NULL,price decimal(6,2) default 0.00);
 
 alter table books ADD publication_date int;
@@ -26,7 +25,7 @@ alter table books drop column publication_date;
 --
 
 create table students(studentid int primary key, name varchar(100) NOT NULL,course varchar(50) default 'MCA', age int,
-    -> check (age>20 and age<40) );
+check (age>20 and age<40) );
 
 --
 -- Dumping data for table books
@@ -40,20 +39,22 @@ update books set price=700.00 where title='Operating System Concepts';
 
 update books set price = price * 1.1;
 
+delete from books where bookid=3;
+
 --
 -- Dumping data for table students
 --
 
 insert into students values (101,'Midhun K','MCA',22),(102,'Ann Mariya','MCA',30),(103,'Sidharth M','MCA',21);
 
+drop table students;
 
 --
 -- SQl Query Statements
 --
 
-delete from books where bookid=3;
 
-drop table students;
+
 
 
 
