@@ -1,0 +1,32 @@
+9-------------
+
+Enter number of employees : 
+2
+Enter Employee details one by one .. 
+Enter 0 employee details..
+Enter employee id ( integer ): 
+111
+Enter employee name ( String ): 
+ac
+Enter employee salary (integer): 
+12446
+Enter 1 employee details..
+Enter employee id ( integer ): 
+222
+Enter employee name ( String ): 
+adsf
+Enter employee salary (integer): 
+23546
+Employee are : 
+ 
+EmpId = 111 Name = ac Salary = 12446
+EmpId = 222 Name = adsf Salary = 23546
+Enter employee number to search : 
+222
+ Employee found . 
+EmpId = 222 Name = adsf Salary = 23546
+
+
+
+
+
